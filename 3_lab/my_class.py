@@ -7,15 +7,27 @@ class MySuperClass:
         Прізвище студента
     
     """
-    def __init__(self, surname, name, mark):
+    def __init__(self, surname:str, name, mark:int, group=None):
         """
         Ініціалізуємо обєкт
         - в середині конструктора створюються атрибути
         """
         print("Викликаємо __init__")
-        self.surname = surname
-        self.name = name
-        self.mark = mark
+        self.__surname = surname #  private Це приватні атрибути, вони не висвічуються назовні
+        self.__name = name
+        self.mark = mark # public публічний атрибук
+        self.group = group
+        self._age = None # (protected) захищений атрибут
+    
+    @property
+    def name(self):
+        """Ця властивість є затритою, її можна читати але не можна змінювати
+        """
+        return self.__name
+    
+    @property
+    def surname(self):
+        return self.__surname
     
     def __repr__(self):
         return "Представлення обєкту Студент, його задають: MySuperClass(surname, name, mark)"
@@ -25,28 +37,3 @@ class MySuperClass:
 
 def function_in_module():
     pass
-
-# Ось так нам допоміг ChatGPT зробити опис
-class Students:
-    """
-    Клас Students для зберігання інформації про студентів.
-
-    Attributes:
-        surname (str): Прізвище студента.
-        name (str): Ім'я студента.
-        mark (int): Оцінка студента.
-    """
-
-    def __init__(self, surname: str, name: str, mark: int):
-        """
-        Ініціалізує новий екземпляр класу Students.
-
-        Args:
-            surname (str): Прізвище студента.
-            name (str): Ім'я студента.
-            mark (int): Оцінка студента, яка повинна бути цілим числом.
-        """
-        print("Викликаємо __init__")
-        self.surname = surname
-        self.name = name
-        self.mark = mark
