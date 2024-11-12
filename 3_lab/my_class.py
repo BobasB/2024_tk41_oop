@@ -7,6 +7,14 @@ class MySuperClass:
         Прізвище студента
     
     """
+    var_lover_case = "Це проста класова змінна"
+    COLLEGE_NAME = "Це подібне до константи в клосі, але ми можемо її перезаписати"
+    _protected_var = 1
+    __private_var = 2
+
+    total_students = 0
+    total_marks = 0
+
     def __init__(self, surname:str, name, mark:int, group=None):
         """
         Ініціалізуємо обєкт
@@ -19,7 +27,20 @@ class MySuperClass:
         self.group = group
         self._age = None # (protected) захищений атрибут
         self._scholarship = 0
-    
+
+        self.var_lover_case = "Перазаписали класові змінну"
+        MySuperClass.total_students += 1
+        MySuperClass.total_marks += mark
+
+
+    def __del__(self):
+        print("Відрахували студента")
+        MySuperClass.total_students -= 1
+
+    @property
+    def college_raiting(self):
+        return MySuperClass.total_marks / MySuperClass.total_students
+
     @property
     def name(self):
         """Ця властивість є закритою, її можна читати але не можна змінювати
