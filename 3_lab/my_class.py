@@ -88,6 +88,16 @@ class MySuperClass:
     
     def panishment(self):
         return "Ми прийшли додому і мама нас насварила за погані оцінки"
+    
+    @staticmethod
+    def hobbi(h=None):
+        """в таких методах нема вказівника на обєкт
+        """
+        if h:
+            print(f"В мене зявилось хоббі {h}")
+        else:
+            print("На жаль в мене немає Хаббі")
+
 
 def function_in_module():
     """Це просто функція (згідно загальної термінології)
