@@ -97,6 +97,22 @@ class MySuperClass:
             print(f"В мене зявилось хоббі {h}")
         else:
             print("На жаль в мене немає Хаббі")
+    
+    @classmethod
+    def create_from_surname_name(cls, full_name:str):
+        """ альтернативний конструктор, створюємо обєкт з повного імені
+        розчеплюємо повне імя на частинки Прізкище та Імя
+        """
+        surname, name = full_name.split(" ")
+        return cls(surname, name, 0)
+    
+    @classmethod
+    def create_from_name_surname(cls, full_name:str):
+        """ альтернативний конструктор, створюємо обєкт з повного імені
+        розчеплюємо повне імя на частинки Прізкище та Імя
+        """
+        name, surname = full_name.split(" ")
+        return cls(surname, name, 0)
 
 
 def function_in_module():
